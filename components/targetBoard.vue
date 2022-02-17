@@ -2,6 +2,7 @@
   <div>
     <p>Round Score: {{ roundScore }}</p>
     <p>Throw Count: {{ throwCount }}</p>
+    <p>Throw Count: {{ playerOnBoard }}</p>
 
     <div class="w-52 border">
       <div class="flex flex-row p-3">
@@ -48,6 +49,7 @@ export default {
       throwCount: 0,
     }
   },
+  props: ['roundNumber', 'location'],
   methods: {
     onClick(number) {
       //7 is only available on the final throw
@@ -57,6 +59,24 @@ export default {
       } else if (this.throwCount === 4) {
         this.roundScore += number
         this.throwCount += 1
+      }
+    },
+  },
+  computed: {
+    playerOnBoard() {
+      if (this.roundNumber === 1 || this.roundNumber === 3) {
+        if (this.location === 'L') {
+          return 'player1'
+        } else {
+          return 'player2'
+        }
+      }
+      if (this.roundNumber === 2) {
+        if (this.location === 'L') {
+          return 'player2'
+        } else {
+          return 'player1'
+        }
       }
     },
   },
