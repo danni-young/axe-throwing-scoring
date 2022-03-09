@@ -21,7 +21,9 @@
     />
   </div>
 </template>
-// at the end of each game, the scores are saved in this component
+// round updates
+// score updates for each player after each round
+
 
 <script>
 import targetBoard from './targetBoard.vue'

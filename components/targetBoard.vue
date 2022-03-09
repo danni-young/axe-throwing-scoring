@@ -41,6 +41,8 @@
   </div>
 </template>
 
+//when the round number changes, the score and throw count need to go back to zero
+
 <script>
 export default {
   data() {
@@ -68,6 +70,12 @@ export default {
         console.log('hiya')
         this.$emit('round-end', this.playerOnBoard, this.roundScore)
         this.$emit('update-round')
+      }
+    },
+    roundNumber(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.roundScore = 0
+        this.throwCount = 0
       }
     },
   },
