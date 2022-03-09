@@ -41,8 +41,6 @@
   </div>
 </template>
 
-//when the round number changes, the score and throw count need to go back to zero
-
 <script>
 export default {
   data() {

@@ -21,8 +21,14 @@
     />
   </div>
 </template>
-// round updates
-// score updates for each player after each round
+
+
+// TODO: create modal that displays when both players have finished the third round
+// work out who has won and display button to add to game number and start a new game
+
+
+// then we can use the same modal as before to announce the next player
+
 
 
 <script>

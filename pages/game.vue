@@ -9,10 +9,6 @@
   </div>
 </template>
 
-// 1 game contains 3 matches
-// each match has 5 throws
-// whoever wins 2 out of 3 games wins
-
 
 <script>
 import GameDashboard from '~/components/gameDashboard.vue'
