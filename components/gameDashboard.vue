@@ -47,13 +47,15 @@ export default {
   methods: {
     updateScore(player, score) {
       this[player][this.roundNumber] = score
-      console.log(this[player][this.roundNumber])
     },
     updateRound() {
-      if (this.playerOneBeen === true) {
-        this.roundNumber += 1
-      } else {
-        this.playerOneBeen = true
+      if (this.roundNumber < 3) {
+        if (this.playerOneBeen === true) {
+          this.roundNumber += 1
+          this.playerOneBeen = false
+        } else {
+          this.playerOneBeen = true
+        }
       }
     },
   },

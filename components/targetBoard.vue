@@ -67,7 +67,7 @@ export default {
   watch: {
     throwCount() {
       if (this.throwCount === 5) {
-        console.log('hiya')
+        console.log('no more throws available')
         this.$emit('round-end', this.playerOnBoard, this.roundScore)
         this.$emit('update-round')
       }
