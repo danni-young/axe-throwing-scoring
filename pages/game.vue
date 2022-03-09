@@ -5,18 +5,23 @@
     <!-- Pop up window telling who is playing next -->
     <!-- Two boards on either side of the screen -->
     <p>Welcome players!</p>
+    <game-dashboard />
   </div>
 </template>
 
+// 1 game contains 3 matches
+// each match has 5 throws
+// whoever wins 2 out of 3 games wins
 
 
 <script>
+import GameDashboard from '~/components/gameDashboard.vue'
 import getReadyPopUp from '~/components/getReadyPopUp.vue'
 export default {
   data() {
     return {}
   },
-  components: { getReadyPopUp },
+  components: { getReadyPopUp, GameDashboard },
   computed: {
     players() {
       return this.$store.state.players.playerNames

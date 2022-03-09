@@ -2,7 +2,7 @@
   <div>
     <p>Round Score: {{ roundScore }}</p>
     <p>Throw Count: {{ throwCount }}</p>
-    <p>Throw Count: {{ playerOnBoard }}</p>
+    <p>Player: {{ playerOnBoard }}</p>
 
     <div class="w-52 border">
       <div class="flex flex-row p-3">
@@ -59,6 +59,15 @@ export default {
       } else if (this.throwCount === 4) {
         this.roundScore += number
         this.throwCount += 1
+      }
+    },
+  },
+  watch: {
+    throwCount() {
+      if (this.throwCount === 5) {
+        console.log('hiya')
+        this.$emit('round-end', this.playerOnBoard, this.roundScore)
+        this.$emit('update-round')
       }
     },
   },
