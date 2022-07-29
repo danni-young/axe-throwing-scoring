@@ -7,8 +7,9 @@ export const state = () => ({
     ["Matthew", "Sarah"],
     ["Allan", "Sarah"]],
     gameNumber: 0
+    //scores
 })
-
+//need to keep the scores in here
 export const mutations = {
     add(state, text) {
         state.playerNames =
@@ -17,11 +18,7 @@ export const mutations = {
     addCombination(state, text) {
         state.playerCombinations =
             text
-    },
-    completedGame(state) {
-        state.playerCombinations =
-            state.playerCombinations += 1
-    },
+    }
 }
 
 

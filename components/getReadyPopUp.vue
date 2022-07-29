@@ -138,13 +138,12 @@ export default {
   name: 'large-modal',
   data() {
     return {
-      showModal: true,
     }
   },
-  props: ['competitors'],
+  props: ['competitors', 'showModal'],
   methods: {
     toggleModal: function () {
-      this.showModal = !this.showModal
+      this.$emit('closeModal')
     },
   },
 }

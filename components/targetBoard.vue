@@ -51,6 +51,7 @@ export default {
   },
   props: ['roundNumber', 'location'],
   methods: {
+    //This is magic...
     onClick(number) {
       //7 is only available on the final throw
       if (this.throwCount < 4 && number !== 7) {
@@ -66,7 +67,7 @@ export default {
     throwCount() {
       if (this.throwCount === 5) {
         console.log('no more throws available')
-        this.$emit('round-end', this.playerOnBoard, this.roundScore)
+        this.$emit('round-end', this.playerOnBoard, this.roundScore, this.roundNumber)
         this.$emit('update-round')
       }
     },
