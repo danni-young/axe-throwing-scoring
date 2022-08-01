@@ -132,17 +132,15 @@
 
 <script>
 export default {
-  name: 'large-modal',
+  name: 'winner-modal',
   data() {
-    return {
-      showModal: true,
+    return {  
     }
   },
-  props: ['winner'],
+  props: ['winner', 'showModal'],
   methods: {
     toggleModal: function () {
-      this.showModal = !this.showModal
-      //add something here to game number
+      this.$emit('closeModal')
     },
   },
 }
