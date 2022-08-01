@@ -135,7 +135,7 @@
 
 <script>
 export default {
-  name: 'large-modal',
+  name: 'game-modal',
   data() {
     return {
     }
