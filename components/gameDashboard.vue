@@ -22,33 +22,15 @@
   </div>
 </template>
 
-
-// TODO: create modal that displays when both players have finished the third round
-// work out who has won and display button to add to game number and start a new game
-
-//need to establish what means it is done
-// pass in the winners name, which we get from...
-
-// then we can use the same modal as before to announce the next player
-
-
-
 <script>
-// need a way to show how the round is complete, this then changes 
-/**
- * Work out how we know the round is complete - both players have used up their throws and it is round three
- * When the three rounds are complete, activate the winners pop up, showing the score
- */
 import targetBoard from './targetBoard.vue'
 export default {
   data() {
     return {
       playerOneBeen: false,
       gameComplete: false,
-      // WHEN BOTH PLAYERS ARE COMPLETE, SAVE SCORES IN STORE
-      // EMIT SOMETHING TO CHANGE THE PLAYER COMBO IN GAME (OR WHEREVER STORED)
-      // ANNOUNCE THE WINNER ON A MODAL, CLEAR 
-      // AND ANNOUNCE NEXT PLAYERS ON A MODAL TO START GAME AGAIN
+     //THINK ABOUT WHAT TO DO IN A TIE, FOR THE WINNERS MODAL
+     //CLEAR THE GAME DASHBOARD AND THE TARGET BOARD WHEN THE GAME IS COMPLETE
       // CREATE A CATCH FOR THE FINAL PLAYERS AND THEN WORK OUT WINNER OVERALL!
       roundNumber: 1,
       One: {
@@ -93,6 +75,7 @@ export default {
     gameComplete: function (){
       console.log('game ended')
       this.$emit('finishSession', [this.One, this.Two])
+      //clear data once this has completed
     }
   }
 }
