@@ -78,6 +78,7 @@ export default {
       }
     },
   },
+  //create function to clear all when round complete
   computed: {
     playerOnBoard() {
       if (this.roundNumber === 1 || this.roundNumber === 3) {
