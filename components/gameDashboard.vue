@@ -44,19 +44,20 @@ export default {
   data() {
     return {
       playerOneBeen: false,
+      gameComplete: false,
       // WHEN BOTH PLAYERS ARE COMPLETE, SAVE SCORES IN STORE
       // EMIT SOMETHING TO CHANGE THE PLAYER COMBO IN GAME (OR WHEREVER STORED)
       // ANNOUNCE THE WINNER ON A MODAL, CLEAR 
       // AND ANNOUNCE NEXT PLAYERS ON A MODAL TO START GAME AGAIN
       // CREATE A CATCH FOR THE FINAL PLAYERS AND THEN WORK OUT WINNER OVERALL!
       roundNumber: 1,
-      player1: {
+      One: {
         1: 0,
         2: 0,
         3: 0,
         complete: false
       },
-      player2: {
+      Two: {
         1: 0,
         2: 0,
         3: 0,
@@ -70,8 +71,12 @@ export default {
       console.log(round)
       if(round === 3){
          this[player].complete = true
+         if(this.One.complete === true && this.Two.complete === true){
+          this.gameComplete = true
+         }
       }
     },
+    //when both players are complete
     updateRound() {
       if (this.roundNumber < 3) {
         if (this.playerOneBeen === true) {
@@ -84,6 +89,12 @@ export default {
     },
   },
   components: { targetBoard },
+  watch: {
+    gameComplete: function (){
+      console.log('game ended')
+      this.$emit('finishSession', [this.One, this.Two])
+    }
+  }
 }
 </script>
 

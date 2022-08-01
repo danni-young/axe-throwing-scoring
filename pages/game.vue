@@ -5,7 +5,7 @@
     <!-- Pop up window telling who is playing next -->
     <!-- Two boards on either side of the screen -->
     <p>Welcome players!</p>
-    <game-dashboard />
+    <game-dashboard v-on:finishSession="finishSession"/>
   </div>
 </template>
 
@@ -13,6 +13,8 @@
 <script>
 import GameDashboard from '~/components/gameDashboard.vue'
 import getReadyPopUp from '~/components/getReadyPopUp.vue'
+import {formatAndAddScores} from '~/lib/formatAndAddScores'
+
 export default {
   data() {
     return {
@@ -38,7 +40,25 @@ export default {
     //can use this to reshow the modal when a new set of players start
     toggleModal() {
       this.showModal = !this.showModal
-    }
+    },
+     finishSession(playerScores){
+      const updatedPlayerScores = playerScores.map((player) =>{
+        delete player.complete
+        return player
+      })
+    
+    const formattedPlayerScores = formatAndAddScores(updatedPlayerScores, this.playerCurrentlyPlaying)
+    //store the players scores so far
+    this.$store.commit('players/addScores', formattedPlayerScores)
+  
+    // increase the game number
+    this.$store.commit('players/moveToNextGame')
+
+    // toggle on winner pop up
+    
+
+      //pop up button toggles on player pop up
+    },
   }
 }
 </script>

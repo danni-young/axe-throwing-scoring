@@ -82,16 +82,16 @@ export default {
     playerOnBoard() {
       if (this.roundNumber === 1 || this.roundNumber === 3) {
         if (this.location === 'L') {
-          return 'player1'
+          return 'One'
         } else {
-          return 'player2'
+          return 'Two'
         }
       }
       if (this.roundNumber === 2) {
         if (this.location === 'L') {
-          return 'player2'
+          return 'Two'
         } else {
-          return 'player1'
+          return 'One'
         }
       }
     },
