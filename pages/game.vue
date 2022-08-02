@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>Do you want to play a game?</h1>
+    <p>Players: {{ playerCurrentlyPlaying[0] }} & {{ playerCurrentlyPlaying[1] }}</p>
+    <p>Game {{ gameNumber + 1 }} of 6 </p>
     <!-- Pop up window telling who is playing next -->
     <get-ready-pop-up :competitors="playerCurrentlyPlaying" v-on:closeModal="toggleModal" :showModal="showModal" />
     <!-- Pop up window telling who has won the round -->
     <winner-announcement :winner="roundWinner" v-on:closeModal="toggleModal" :showModal="showWinnerModal" />
     <!-- Two boards on either side of the screen -->
-    <p>Welcome players!</p>
-    <game-dashboard v-on:finishSession="finishSession"/>
+    <game-dashboard v-on:finishSession="finishSession" :gameComplete='gameComplete' v-on:toggleGameComplete="toggleGameComplete"/>
   </div>
 </template>
 
@@ -23,7 +23,8 @@ export default {
     return {
       showModal: true,
       showWinnerModal: false,
-      roundWinner: ''
+      roundWinner: '',
+      gameComplete: false,
       }
   },
   components: { getReadyPopUp, GameDashboard, WinnerAnnouncement },
@@ -42,6 +43,9 @@ export default {
     },
   },
   methods: {
+      toggleGameComplete(){
+      this.gameComplete = !this.gameComplete
+    },
     //can use this to reshow the modal when a new set of players start
     toggleModal() {
       this.showModal = !this.showModal
@@ -52,14 +56,15 @@ export default {
         delete player.complete
         return player
       })
-    const formattedPlayerScores = formatAndAddScores(updatedPlayerScores, this.playerCurrentlyPlaying)
-    this.roundWinner = Object.keys(formattedPlayerScores).reduce((a, b) => formattedPlayerScores[a] > formattedPlayerScores[b] ? a : b);
-    this.showWinnerModal = !this.showWinnerModal
-    //store the players scores so far
-    this.$store.commit('players/addScores', formattedPlayerScores)
-  
-    // increase the game number
-    this.$store.commit('players/moveToNextGame')
+      const formattedPlayerScores = formatAndAddScores(updatedPlayerScores, this.playerCurrentlyPlaying)
+      this.roundWinner = Object.keys(formattedPlayerScores).reduce((a, b) => formattedPlayerScores[a] > formattedPlayerScores[b] ? a : b);
+      this.showWinnerModal = !this.showWinnerModal
+      //store the players scores so far
+      this.$store.commit('players/addScores', formattedPlayerScores)
+    
+      // increase the game number
+      this.$store.commit('players/moveToNextGame')
+      this.gameComplete = false
     },
   }
 }

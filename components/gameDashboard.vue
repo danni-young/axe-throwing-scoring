@@ -7,6 +7,7 @@
       :roundNumber="roundNumber"
       v-on:round-end="completeRound"
       v-on:update-round="updateRound"
+      :gameComplete="gameComplete"
     />
     <div class="mx-7">
       <p>Player 1 vs Player 2</p>
@@ -18,20 +19,19 @@
       :roundNumber="roundNumber"
       v-on:round-end="completeRound"
       v-on:update-round="updateRound"
+      :gameComplete="gameComplete"
     />
   </div>
 </template>
 
 <script>
 import targetBoard from './targetBoard.vue'
+  // THINK ABOUT WHAT TO DO IN A TIE, FOR THE WINNERS MODAL
+  // CREATE A CATCH FOR THE FINAL PLAYERS AND THEN WORK OUT WINNER OVERALL!
 export default {
   data() {
     return {
-      playerOneBeen: false,
-      gameComplete: false,
-     //THINK ABOUT WHAT TO DO IN A TIE, FOR THE WINNERS MODAL
-     //CLEAR THE GAME DASHBOARD AND THE TARGET BOARD WHEN THE GAME IS COMPLETE
-      // CREATE A CATCH FOR THE FINAL PLAYERS AND THEN WORK OUT WINNER OVERALL!
+      playerOneBeen: false,     
       roundNumber: 1,
       One: {
         1: 0,
@@ -47,14 +47,14 @@ export default {
       },
     }
   },
+  props: ['gameComplete'],
   methods: {
     completeRound(player, score, round){
       this[player][this.roundNumber] = score
-      console.log(round)
       if(round === 3){
          this[player].complete = true
          if(this.One.complete === true && this.Two.complete === true){
-          this.gameComplete = true
+         this.$emit('toggleGameComplete')
          }
       }
     },
@@ -73,9 +73,24 @@ export default {
   components: { targetBoard },
   watch: {
     gameComplete: function (){
-      console.log('game ended')
+      if(this.gameComplete === true){
       this.$emit('finishSession', [this.One, this.Two])
-      //clear data once this has completed
+      // clear once game is complete
+      this.roundNumber = 1
+      this.One = {
+        1: 0,
+        2: 0,
+        3: 0,
+        complete: false
+      }
+      this.Two = {
+        1: 0,
+        2: 0,
+        3: 0,
+        complete: false
+      }
+      this.playerOneBeen = false
+      }
     }
   }
 }

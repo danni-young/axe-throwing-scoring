@@ -49,7 +49,7 @@ export default {
       throwCount: 0,
     }
   },
-  props: ['roundNumber', 'location'],
+  props: ['roundNumber', 'location', 'gameComplete'],
   methods: {
     //This is magic...
     onClick(number) {
@@ -77,6 +77,12 @@ export default {
         this.throwCount = 0
       }
     },
+    gameComplete() {
+      if(this.gameComplete === true){
+        this.roundScore = 0
+        this.throwCount = 0
+      }
+    }
   },
   //create function to clear all when round complete
   computed: {
