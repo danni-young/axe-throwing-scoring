@@ -51,16 +51,11 @@ export default {
   },
   props: ['roundNumber', 'location', 'gameComplete'],
   methods: {
-    //This is magic...
-    onClick(number) {
-      //7 is only available on the final throw
-      if (this.throwCount < 4 && number !== 7) {
-        this.roundScore += number
+    onClick(score) {
+      if ((this.throwCount < 4 && score !== 7) || (this.throwCount === 4)) {
+          this.roundScore += score
         this.throwCount += 1
-      } else if (this.throwCount === 4) {
-        this.roundScore += number
-        this.throwCount += 1
-      }
+      } 
     },
   },
   watch: {
@@ -84,7 +79,6 @@ export default {
       }
     }
   },
-  //create function to clear all when round complete
   computed: {
     playerOnBoard() {
       if (this.roundNumber === 1 || this.roundNumber === 3) {
