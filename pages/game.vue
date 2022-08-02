@@ -46,7 +46,6 @@ export default {
       toggleGameComplete(){
       this.gameComplete = !this.gameComplete
     },
-    //can use this to reshow the modal when a new set of players start
     toggleModal() {
       this.showModal = !this.showModal
       this.showWinnerModal = false
@@ -59,10 +58,8 @@ export default {
       const formattedPlayerScores = formatAndAddScores(updatedPlayerScores, this.playerCurrentlyPlaying)
       this.roundWinner = Object.keys(formattedPlayerScores).reduce((a, b) => formattedPlayerScores[a] > formattedPlayerScores[b] ? a : b);
       this.showWinnerModal = !this.showWinnerModal
-      //store the players scores so far
+
       this.$store.commit('players/addScores', formattedPlayerScores)
-    
-      // increase the game number
       this.$store.commit('players/moveToNextGame')
       this.gameComplete = false
     },

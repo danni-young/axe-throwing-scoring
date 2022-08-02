@@ -32,7 +32,6 @@ export default {
   },
   methods: {
     addPlayers(players) {
-      //check all players are added
       if (
         this.player1.length === 0 ||
         this.player2.length === 0 ||
@@ -41,7 +40,6 @@ export default {
       ) {
         this.error = 'Please add names of all players to begin playing'
       } else {
-        //add to store
         this.error = ''
         this.$store.commit('players/add', players)
         const playerRounds = createPlayerRounds(players)
