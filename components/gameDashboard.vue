@@ -31,7 +31,7 @@ import targetBoard from './targetBoard.vue'
 export default {
   data() {
     return {
-      playerOneBeen: false,     
+      hasOnePlayerBeen: false,     
       roundNumber: 1,
       One: {
         1: 0,
@@ -61,11 +61,11 @@ export default {
     //when both players are complete
     updateRound() {
       if (this.roundNumber < 3) {
-        if (this.playerOneBeen === true) {
+        if (this.hasOnePlayerBeen === true) {
           this.roundNumber += 1
-          this.playerOneBeen = false
+          this.hasOnePlayerBeen = false
         } else {
-          this.playerOneBeen = true
+          this.hasOnePlayerBeen = true
         }
       }
     },
@@ -89,7 +89,7 @@ export default {
         3: 0,
         complete: false
       }
-      this.playerOneBeen = false
+      this.hasOnePlayerBeen = false
       }
     }
   }
