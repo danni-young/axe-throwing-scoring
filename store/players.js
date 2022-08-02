@@ -36,10 +36,9 @@ export const mutations = {
     addScores(state, playerScores){
         const names = Object.keys(playerScores)
         names.forEach((name) => {
-            if(state.scores[name]){
-                state.scores[name].rounds = [...state.score[names].rounds, playerScores[name]]
+            if(state.scores.hasOwnProperty(name)){
+                state.scores[name].rounds = [...state.scores[name].rounds, playerScores[name]]
                 state.scores[name].total += playerScores[name]
-
             } else {
                 state.scores[name] = {rounds: [playerScores[name]], total: playerScores[name]}
             }
