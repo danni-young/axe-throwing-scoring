@@ -1,9 +1,9 @@
 <template>
   <div>
-    <p>Players: {{ playerCurrentlyPlaying[0] }} & {{ playerCurrentlyPlaying[1] }}</p>
+    <p v-if="gameNumber < 6"> Players: {{ playerCurrentlyPlaying[0] }} & {{ playerCurrentlyPlaying[1] }}</p>
     <p>Game {{ gameNumber + 1 }} of 6 </p>
     <!-- Pop up window telling who is playing next -->
-    <get-ready-pop-up :competitors="playerCurrentlyPlaying" v-on:closeModal="toggleModal" :showModal="showModal" />
+    <get-ready-pop-up :competitors="playerCurrentlyPlaying" v-on:closeModal="toggleModal" :showModal="showModal" v-if="gameNumber < 6"></get-ready-pop-up> />
     <!-- Pop up window telling who has won the round -->
     <winner-announcement :winner="roundWinner" v-on:closeModal="toggleModal" :showModal="showWinnerModal" />
     <!-- Two boards on either side of the screen -->
@@ -63,6 +63,13 @@ export default {
       this.$store.commit('players/moveToNextGame')
       this.gameComplete = false
     },
+  },
+  watch: {
+    gameNumber(){
+      if(this.gameNumber === 6){
+        this.$router.push({name: 'game-over'})
+      }
+    }
   }
 }
 </script>
