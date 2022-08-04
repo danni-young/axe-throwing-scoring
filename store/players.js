@@ -9,10 +9,15 @@ export const state = () => ({
     ["Matthew", "Sarah"],
     ["Allan", "Sarah"]],
     // number
-    gameNumber: 0,
+    gameNumber: 5,
     // { string: { rounds: number[], total: number } }
     scores: {
-
+Danni: {
+    rounds: [1], total: 1
+},
+Matthew: {
+    rounds: [2], total: 2
+}
     }
 })
 
