@@ -12,12 +12,18 @@ export const state = () => ({
     gameNumber: 5,
     // { string: { rounds: number[], total: number } }
     scores: {
-Danni: {
-    rounds: [1], total: 1
-},
-Matthew: {
-    rounds: [2], total: 2
-}
+        Danni: {
+            rounds: [1], total: 1
+        },
+        Matthew: {
+            rounds: [2], total: 2
+        },
+        Sarah: {
+            rounds: [2], total: 2
+        },
+        Allan: {
+            rounds: [4], total: 4
+        }
     }
 })
 
@@ -38,14 +44,14 @@ export const mutations = {
      * @param {any} state 
      * @param {string: number } playerScores 
      */
-    addScores(state, playerScores){
+    addScores(state, playerScores) {
         const names = Object.keys(playerScores)
         names.forEach((name) => {
-            if(state.scores.hasOwnProperty(name)){
+            if (state.scores.hasOwnProperty(name)) {
                 state.scores[name].rounds = [...state.scores[name].rounds, playerScores[name]]
                 state.scores[name].total += playerScores[name]
             } else {
-                state.scores[name] = {rounds: [playerScores[name]], total: playerScores[name]}
+                state.scores[name] = { rounds: [playerScores[name]], total: playerScores[name] }
             }
         })
     }

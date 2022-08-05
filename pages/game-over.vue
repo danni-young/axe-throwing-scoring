@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>The final scores are in...</h1>
-    <p v-for="player in scores.results">{{player.name}} -> {{player.score}}</p>
+    <ul>
+      <li class="" v-for="player in scores.results" v-bind:key="player.name">{{player.name}} -> {{player.score}}</li>
+    </ul>
     <nuxt-link to="/playerDetails" class="border"
       >Play again?</nuxt-link>
   </div>
