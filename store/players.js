@@ -1,15 +1,18 @@
 export const state = () => ({
     // string[]
-    playerNames: ['Danni', 'Matthew', "Sarah", "Allan"],
+    playerNames: []
+        // ['Danni', 'Matthew', "Sarah", "Allan"]
+        ,
     // string[][]
-    playerCombinations: [['Danni', 'Matthew'],
-    ["Danni", "Allan"],
-    ["Danni", "Sarah"],
-    ["Matthew", "Allan"],
-    ["Matthew", "Sarah"],
-    ["Allan", "Sarah"]],
+    playerCombinations: [],
+    // [['Danni', 'Matthew'],
+    // ["Danni", "Allan"],
+    // ["Danni", "Sarah"],
+    // ["Matthew", "Allan"],
+    // ["Matthew", "Sarah"],
+    // ["Allan", "Sarah"]],
     // number
-    gameNumber: 5,
+    gameNumber: 0,
     // { string: { rounds: number[], total: number } }
     scores: {
         Danni: {
