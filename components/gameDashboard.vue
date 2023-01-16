@@ -4,7 +4,7 @@
       <p class="text-xl pl-4 font-bold">Round Number: {{ roundNumber }}</p>
     </div>
   <div
-    class="flex flex-row justify-around items-center h-3/6"
+    class="flex flex-row flex-wrap justify-around items-center h-3/6"
   >
 
     <target-board
