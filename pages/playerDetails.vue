@@ -1,7 +1,9 @@
 <template>
   <div class="bg-green-400 w-screen h-screen flex flex-row items-center">
     <div class="w-1/2 mx-auto flex flex-col items-center">
-      <p class="text-gray-800 uppercase text-3xl font-bold mt-6 mb-3">Enter player names</p>
+      <p class="text-gray-800 uppercase text-3xl font-bold mt-6 mb-3">
+        Enter player names
+      </p>
       <p :v-if="error.length > 0" class="font-bold text-red-500">{{ error }}</p>
       <div class="flex flex-col w-1/2">
         <input
@@ -11,7 +13,10 @@
           :placeholder="` Player ${index + 1}`"
           v-model="$data[player]"
         />
-        <button v-on:click="addPlayers([player1, player2, player3, player4])" class="bg-white hover:bg-gray-100 text-gray-800 lg:text-base text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow w-content mx-auto mt-2">
+        <button
+          v-on:click="addPlayers([player1, player2, player3, player4])"
+          class="bg-white hover:bg-red-100 text-gray-800 lg:text-base text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow w-content mx-auto"
+        >
           Save players
         </button>
       </div>
@@ -53,5 +58,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>
