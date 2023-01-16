@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-stone-50 p-2 w-max">
+  <div class="bg-stone-50 p-2 w-max mt-2">
     <div class="mb-5 ">
       <p class="text-lg font-bold">Player: {{ playerOnBoard }}</p>
       <p>Round Score: {{ roundScore }}</p>
