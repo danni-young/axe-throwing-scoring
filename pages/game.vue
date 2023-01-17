@@ -1,9 +1,12 @@
 <template>
   <div class="bg-green-400 h-screen">
-    <p class="font-bold py-2 text-xl border-black border-4 px-2 w-36">Game {{ gameNumber + 1 }} of 6</p>
-    <p class="text-center text-3xl mb-3" v-if="gameNumber < 6">
-       <strong>{{ playerCurrentlyPlaying[0] }} & {{ playerCurrentlyPlaying[1] }}</strong>
-    </p>
+    <div class="flex flex-row justify-between">
+      <p class="font-bold py-2 text-xl px-2 w-36">Game {{ gameNumber + 1 }} of 6</p>
+      <p class="text-center text-3xl mb-3 pt-3" v-if="gameNumber < 6">
+         <strong>{{ playerCurrentlyPlaying[0] }} & {{ playerCurrentlyPlaying[1] }}</strong>
+      </p>
+      <button v-on:click="toggleInstructions()" class=" border-white border-2 text-white bg-red-400 m-3 rounded-full py-2 px-4">Help</button>
+    </div>
     <!-- Pop up window telling who is playing next -->
     <get-ready-pop-up
       :competitors="playerCurrentlyPlaying"
@@ -17,6 +20,11 @@
       v-on:closeModal="toggleModal"
       :showModal="showWinnerModal"
     />
+    <!-- Instruction modal -->
+    <instruction-modal
+      v-on:closeModal="toggleInstructions"
+      :showModal="showInstructions"
+    />
     <!-- Two boards on either side of the screen -->
     <game-dashboard
       v-on:finishSession="finishSession"
@@ -29,22 +37,23 @@
 <script>
 import GameDashboard from '~/components/gameDashboard.vue'
 import getReadyPopUp from '~/components/getReadyPopUp.vue'
+import InstructionModal from '~/components/instructionModal.vue'
 import { formatAndAddScores } from '~/lib/formatAndAddScores'
 import WinnerAnnouncement from '../components/winnerAnnouncement.vue'
 
 export default {
   /** TODO: ADD A HOME/BACK BUTTON TO GAME PAGE
-   *  TODO: ADD INSTRUCTIONS ON ONE OF THE PAGES
    */
   data() {
     return {
       showModal: true,
+      showInstructions: false,
       showWinnerModal: false,
       roundWinner: '',
       gameComplete: false,
     }
   },
-  components: { getReadyPopUp, GameDashboard, WinnerAnnouncement },
+  components: { getReadyPopUp, GameDashboard, WinnerAnnouncement, InstructionModal },
   computed: {
     players() {
       return this.$store.state.players.playerNames
@@ -66,6 +75,9 @@ export default {
     toggleModal() {
       this.showModal = !this.showModal
       this.showWinnerModal = false
+    },
+    toggleInstructions() {
+      this.showInstructions = !this.showInstructions
     },
     finishSession(playerScores) {
       const updatedPlayerScores = playerScores.map((player) => {

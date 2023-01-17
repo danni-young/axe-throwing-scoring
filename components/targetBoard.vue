@@ -36,7 +36,7 @@
           class="border-2 border-green-700 rounded-full h-9 w-9 cursor-pointer"
           @click.stop="onClick(7)"
         >
-          <p class="ml-3 mt-1">7</p>
+          <p class="ml-3 mt-1 font-semibold">7</p>
         </div>
       </div>
     </div>
