@@ -66,4 +66,14 @@ export const mutations = {
       }
     })
   },
+   /**
+   *
+   * @param {any} state
+   */
+  startNewGame(state){
+    state.scores = {}
+    state.gameNumber = 0
+    state.playerCombinations = []
+    state.playerNames = []
+  }
 }
