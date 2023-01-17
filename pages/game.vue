@@ -43,6 +43,8 @@ import WinnerAnnouncement from '../components/winnerAnnouncement.vue'
 
 export default {
   /** TODO: ADD A HOME/BACK BUTTON TO GAME PAGE
+   * TODO: CHECK MOBILE ON PLAYER DETAILS PAGE
+   * TODO: CREATE A 404 PAGE
    */
   data() {
     return {
