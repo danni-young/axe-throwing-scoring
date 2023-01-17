@@ -35,7 +35,6 @@ import WinnerAnnouncement from '../components/winnerAnnouncement.vue'
 export default {
   /** TODO: ADD A HOME/BACK BUTTON TO GAME PAGE
    *  TODO: ADD INSTRUCTIONS ON ONE OF THE PAGES
-   *  TODO: ALLOW ENTER ON PLAYERS
    */
   data() {
     return {

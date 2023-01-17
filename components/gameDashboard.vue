@@ -31,7 +31,6 @@
 <script>
 import targetBoard from './targetBoard.vue'
 // TODO: THINK ABOUT WHAT TO DO IN A TIE, FOR THE WINNERS MODAL
-// TODO: CREATE A CATCH FOR THE FINAL PLAYERS AND THEN WORK OUT WINNER OVERALL!
 export default {
   data() {
     return {

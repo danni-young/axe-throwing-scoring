@@ -12,6 +12,7 @@
           class="border mb-2 ml-3"
           :placeholder="` Player ${index + 1}`"
           v-model="$data[player]"
+          v-on:keyup.enter="addPlayers([player1, player2, player3, player4])"
         />
         <button
           v-on:click="addPlayers([player1, player2, player3, player4])"
