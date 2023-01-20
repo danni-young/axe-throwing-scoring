@@ -1,11 +1,14 @@
 <template>
+  <div>
+  <navigation-bar
+  v-on:openModal="toggleInstructions"
+  />
   <div class="bg-green-400 h-screen">
-    <div class="flex flex-row justify-between">
+    <div class="flex flex-col w-1/3">
       <p class="font-bold py-2 text-xl px-2 w-36">Game {{ gameNumber + 1 }} of 6</p>
-      <p class="text-center text-3xl mb-3 pt-3" v-if="gameNumber < 6">
-         <strong>{{ playerCurrentlyPlaying[0] }} & {{ playerCurrentlyPlaying[1] }}</strong>
+      <p class="font-bold text-xl pb-2 px-2" v-if="gameNumber < 6">
+         {{ playerCurrentlyPlaying[0] }} & {{ playerCurrentlyPlaying[1] }}
       </p>
-      <button v-on:click="toggleInstructions()" class=" border-white border-2 text-white bg-red-400 m-3 rounded-full py-2 px-4">Help</button>
     </div>
     <!-- Pop up window telling who is playing next -->
     <get-ready-pop-up
@@ -32,6 +35,7 @@
       v-on:toggleGameComplete="toggleGameComplete"
     />
   </div>
+</div>
 </template>
 
 <script>

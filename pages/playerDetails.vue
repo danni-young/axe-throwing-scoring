@@ -1,11 +1,11 @@
 <template>
   <div class="bg-green-400 w-screen h-screen flex flex-row items-center">
-    <div class="w-1/2 mx-auto flex flex-col items-center">
+    <div class="w-2/3 mx-auto flex flex-col items-center text-center">
       <p class="text-gray-800 uppercase text-3xl font-bold mt-6 mb-3">
         Enter player names
       </p>
       <p :v-if="error.length > 0" class="font-bold text-red-500">{{ error }}</p>
-      <div class="flex flex-col w-1/2">
+      <div class="flex flex-col">
         <input
           v-for="(player, index) in players"
           :key="player"

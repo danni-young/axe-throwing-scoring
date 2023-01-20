@@ -1,10 +1,10 @@
 <template>
   <div>
-   <div class="w-full bg-red-400">
-      <p class="text-xl pl-4 font-bold">Round Number: {{ roundNumber }}</p>
+   <div class="w-screen ">
+      <p class="text-xl pl-2 font-bold">Round Number: {{ roundNumber }}</p>
     </div>
   <div
-    class="flex flex-row flex-wrap justify-around items-center h-3/6"
+    class="flex flex-row flex-wrap justify-around items-center h-3/6 w-screen bg-green-400"
   >
 
     <target-board
